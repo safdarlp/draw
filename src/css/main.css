@@ -36,7 +36,6 @@ html {
   }
   
   nav ul li button {
-    width: 90%;
-    margin: 0 auto;
+    width: 100%;
   }
   
