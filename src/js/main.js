@@ -109,8 +109,12 @@ var draw = (function() {
     drawCircle: function() {
 
       ctx.strokeStyle = '#'+Math.floor(Math.random()*16777215).toString(16);
-      ctx.fillStyle = '#'+Math.floor(Math.random()*16777215).toString(16);
+      
+      //ctx.fillStyle = '#'+Math.floor(Math.random()*16777215).toString(16);
 
+      //pick the color from the colorpicker
+      let clr = this.changeColor();
+      ctx.fillStyle = clr;
       let a = (x1-x2)
       let b = (y1-y2)
       let radius = Math.sqrt( a*a + b*b );
@@ -124,7 +128,12 @@ var draw = (function() {
     //Draw a line
     drawLine: function() {
       //Start by using random fill colors.
-      ctx.strokeStyle = '#'+Math.floor(Math.random()*16777215).toString(16);
+      //ctx.strokeStyle = '#'+Math.floor(Math.random()*16777215).toString(16);
+
+
+      //pick the color from the colorpicker
+      let clr = this.changeColor();
+      ctx.strokeStyle = clr;
       ctx.beginPath();
       ctx.moveTo(x1, y1);
       ctx.lineTo(x2, y2);
@@ -135,7 +144,11 @@ var draw = (function() {
     drawPath: function() {
       //console.log({x1:x,y1:y,x2:x2,y2:y2});
       //Start by using random fill colors.
-      ctx.strokeStyle = '#'+Math.floor(Math.random()*16777215).toString(16);
+      // ctx.strokeStyle = '#'+Math.floor(Math.random()*16777215).toString(16);
+
+      //pick the color from the colorpicker
+      let clr = this.changeColor();
+      ctx.strokeStyle = clr;
       ctx.beginPath();
       ctx.moveTo(lx, ly);
       ctx.lineTo(x, y);
@@ -145,7 +158,11 @@ var draw = (function() {
     //Draw a rectangle
     drawRect: function() {
       //Start by using random fill colors.
-      ctx.fillStyle = '#'+Math.floor(Math.random()*16777215).toString(16);
+      // ctx.fillStyle = '#'+Math.floor(Math.random()*16777215).toString(16);
+      
+      //pick the color from the colorpicker
+      let clr = this.changeColor();
+      ctx.fillStyle = clr;
       ctx.fillRect (x1,y1,(x2-x1),(y2-y1));
     },
 
@@ -160,16 +177,24 @@ var draw = (function() {
       ctx.lineTo(y1, x2);      
       ctx.lineTo((x1+y1)/2, x2 - height);
       ctx.closePath();
-    
-      
+         
       ctx.lineWidth = 10;
       ctx.strokeStyle = '#'+Math.floor(Math.random()*16777215).toString(16);
       ctx.stroke();
     
       // the fill color
-      ctx.fillStyle = '#'+Math.floor(Math.random()*16777215).toString(16);
+      //ctx.fillStyle = '#'+Math.floor(Math.random()*16777215).toString(16);
+
+      //pick the color from the colorpicker
+      let clr = this.changeColor();
+      ctx.fillStyle = clr;
       ctx.fill();
 
+    },
+
+    changeColor: function(){
+      let color = document.getElementById("favColor").value;
+      return color;      
     },
 
     getCanvas: function(){
@@ -234,4 +259,8 @@ document.getElementById('btnPath').addEventListener('click', function(){
 
 document.getElementById('btnTriangle').addEventListener('click', function(){
   draw.setShape('triangle');
+}, false);
+
+document.getElementById('favColor').addEventListener('click', function(){
+  changeColor();
 }, false);
