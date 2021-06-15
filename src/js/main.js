@@ -26,9 +26,9 @@ var draw = (function() {
     x2=0,
     y2=0,
 
-    coords = canvas.relMouseCoords();
-    canvasX = coords.x;
-    canvasY = coords.y;
+    // coords = canvas.relMouseCoords(),
+    // canvasX = coords.x,
+    // canvasY = coords.y,
 
     //Tracks the last x,y state
     lx = false,
@@ -129,24 +129,24 @@ var draw = (function() {
       ctx.fill();
     },
 
-    relMouseCoords: function(){
-      var totalOffsetX = 0;
-      var totalOffsetY = 0;
-      var canvasX = 0;
-      var canvasY = 0;
-      var currentElement = this;
+  //   relMouseCoords: function(){
+  //     var totalOffsetX = 0;
+  //     var totalOffsetY = 0;
+  //     var canvasX = 0;
+  //     var canvasY = 0;
+  //     var currentElement = this;
   
-      do{
-          totalOffsetX += currentElement.offsetLeft - currentElement.scrollLeft;
-          totalOffsetY += currentElement.offsetTop - currentElement.scrollTop;
-      }
-      while(currentElement = currentElement.offsetParent)
+  //     do{
+  //         totalOffsetX += currentElement.offsetLeft - currentElement.scrollLeft;
+  //         totalOffsetY += currentElement.offsetTop - currentElement.scrollTop;
+  //     }
+  //     while(currentElement = currentElement.offsetParent)
   
-      canvasX = pageX - totalOffsetX;
-      canvasY = pageY - totalOffsetY;
+  //     canvasX = pageX - totalOffsetX;
+  //     canvasY = pageY - totalOffsetY;
   
-      return {x:canvasX, y:canvasY}
-  },
+  //     return {x:canvasX, y:canvasY}
+  // },
   
 
     //Draw a line
@@ -238,6 +238,8 @@ var draw = (function() {
 
 //Initialize draw
 draw.init();
+
+//relMouseCoords.init();
 
 //Add a mousemove listener to the canvas
 //When the mouse reports a change of position use the event data to
